@@ -216,3 +216,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# === Go Compiled Binaries & Tooling ===
+bin/
+go-app/go-app
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# === Benchmarking Data ===
+benchmarks/results/*.log
