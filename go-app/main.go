@@ -56,6 +56,10 @@ func main(){
 	
 	router := gin.Default()
 
+	router.GET("/", func(c * gin.Context){
+		c.String(200,"Go baseline active")
+	})
+
 	router.POST("/shorten", shortenURL)
 	router.GET("/:short_code", redirectURL)
 	router.HEAD("/:short_code", redirectURL)

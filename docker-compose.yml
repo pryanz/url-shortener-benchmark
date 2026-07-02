@@ -1,0 +1,35 @@
+services:
+  redis-service:
+    image: redis:7.2-alpine
+    container_name: redis-service
+    ports:
+      - "6379:6379"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+
+  python-api:
+    build: ./fastapi-app
+    container_name: python-api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis-service
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+
+  go-api:
+    build: ./go-app
+    container_name: go-api
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis-service
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'

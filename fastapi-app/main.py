@@ -8,7 +8,7 @@ from fastapi.responses import RedirectResponse
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    database.redis_client = redis.Redis(host = 'localhost' , port = 6379 , decode_responses = True)
+    database.redis_client = redis.Redis(host = 'redis-service' , port = 6379 , decode_responses = True)
     yield
     await database.redis_client.aclose()
 
